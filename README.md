@@ -1,70 +1,269 @@
-# Getting Started with Create React App
+# Employee Login System - MERN Stack
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A comprehensive employee attendance system with live photo capture, role-based access control, and admin dashboard.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+### For Employees:
+- 🔐 Secure login with email and password
+- 📸 Live photo capture for daily attendance
+- 📱 Mobile-responsive design
+- 📍 Location capture (optional)
+- 🚫 One login per day restriction
+- ✅ Real-time login confirmation with toast notifications
 
-### `npm start`
+### For Admins:
+- 👥 Employee management (add, edit, deactivate)
+- 📊 Dashboard with attendance statistics
+- 📋 View all employee login records in table format
+- 🖼️ Photo popup view with employee details
+- 🔍 Search and filter functionality
+- 📄 Pagination for large datasets
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Technical Features:
+- 🔒 JWT-based authentication (7-day expiry)
+- ☁️ Cloudinary integration for photo storage
+- 🗑️ Automatic photo deletion after 7 days
+- 🛡️ Role-based access control
+- 📱 Mobile-first responsive design
+- 🎨 Corporate blue color scheme
+- ⚡ Minimal animations and clean UI
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Tech Stack
 
-### `npm test`
+### Backend:
+- **Node.js & Express.js** - Server framework
+- **MongoDB with Mongoose** - Database
+- **JWT** - Authentication
+- **Cloudinary** - Image storage
+- **Multer** - File uploads
+- **bcrypt** - Password hashing
+- **node-cron** - Scheduled tasks
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Frontend:
+- **React 18** - UI framework
+- **React Router** - Navigation
+- **Axios** - HTTP client
+- **Formik & Yup** - Form handling and validation
+- **Framer Motion** - Animations
+- **React Hot Toast** - Notifications
+- **Tailwind CSS** - Styling
+- **React Icons** - Icons
 
-### `npm run build`
+## 📦 Installation & Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites:
+- Node.js (v16 or higher)
+- MongoDB Atlas account
+- Cloudinary account
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1. Clone the Repository
+```bash
+git clone <repository-url>
+cd employee-login-system
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. Backend Setup
 
-### `npm run eject`
+```bash
+# Navigate to backend directory
+cd backend
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Install dependencies
+npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Create .env file and configure:
+NODE_ENV=development
+PORT=5000
+CLIENT_URL=http://localhost:3000
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# MongoDB Atlas Connection
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/employee-login-system
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# JWT Secret (generate a strong random string)
+JWT_SECRET=your-super-secret-jwt-key-make-it-long-and-random
 
-## Learn More
+# Cloudinary Configuration
+CLOUDINARY_CLOUD_NAME=your-cloudinary-cloud-name
+CLOUDINARY_API_KEY=your-cloudinary-api-key
+CLOUDINARY_API_SECRET=your-cloudinary-api-secret
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Create admin user (run once)
+npm run seed-admin
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Start development server
+npm run dev
+```
 
-### Code Splitting
+### 3. Frontend Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+# Navigate to frontend directory
+cd frontend
 
-### Analyzing the Bundle Size
+# Install dependencies
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Create .env file:
+REACT_APP_API_URL=http://localhost:5000/api
 
-### Making a Progressive Web App
+# Start development server
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🔧 Configuration
 
-### Advanced Configuration
+### MongoDB Setup:
+1. Create a MongoDB Atlas account
+2. Create a new cluster
+3. Create a database user
+4. Whitelist your IP address
+5. Get the connection string and add to backend `.env`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Cloudinary Setup:
+1. Create a Cloudinary account
+2. Get your Cloud Name, API Key, and API Secret from dashboard
+3. Add credentials to backend `.env`
+4. Photos are automatically organized in `employee-login-photos` folder
+5. Auto-deletion is configured for 7 days
 
-### Deployment
+### Admin Account:
+The seed script creates a default admin account:
+- **Email**: admin@company.com
+- **Password**: admin123
+- **Role**: admin
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**⚠️ Important**: Change the default admin credentials after first login!
 
-### `npm run build` fails to minify
+## 📱 Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Employee Workflow:
+1. Login with assigned email and password
+2. Take a live photo or upload an image
+3. System records attendance with timestamp and location
+4. Success toast notification confirms login
+5. Cannot login again on the same day
+
+### Admin Workflow:
+1. Login with admin credentials
+2. **Dashboard**: View attendance statistics
+3. **Employees**: Add new employees, manage existing ones
+4. **Login Records**: View all attendance records with photos
+5. Click on photos to view in popup with full details
+
+## 🚀 Deployment
+
+### Backend (Vercel):
+1. Push backend code to GitHub
+2. Connect to Vercel
+3. Set environment variables in Vercel dashboard
+4. Deploy
+
+### Frontend (Vercel):
+1. Update `REACT_APP_API_URL` to your deployed backend URL
+2. Push frontend code to GitHub
+3. Connect to Vercel
+4. Deploy
+
+### Environment Variables for Production:
+```bash
+# Backend
+NODE_ENV=production
+CLIENT_URL=https://your-frontend-domain.vercel.app
+
+# Frontend
+REACT_APP_API_URL=https://your-backend-domain.vercel.app/api
+```
+
+## 📋 API Endpoints
+
+### Authentication:
+- `POST /api/auth/login` - User login
+- `POST /api/auth/logout` - User logout
+- `GET /api/auth/me` - Get current user
+- `GET /api/auth/verify` - Verify token
+
+### Employee:
+- `GET /api/employee/check-login-status` - Check today's login status
+- `POST /api/employee/login-with-photo` - Record attendance with photo
+- `GET /api/employee/login-history` - Get employee's login history
+
+### Admin:
+- `POST /api/admin/create-employee` - Create new employee
+- `GET /api/admin/employees` - Get all employees
+- `GET /api/admin/login-records` - Get all login records
+- `PATCH /api/admin/employee/:id/status` - Update employee status
+- `DELETE /api/admin/employee/:id` - Delete employee
+- `GET /api/admin/stats` - Get dashboard statistics
+
+## 🔐 Security Features
+
+- **Password Hashing**: bcrypt with salt rounds
+- **JWT Tokens**: 7-day expiry with HTTP-only cookies
+- **Role-based Access**: Employee/Admin permissions
+- **Input Validation**: Server-side validation with Yup
+- **File Upload Security**: Image-only uploads with size limits
+- **CORS Configuration**: Controlled cross-origin access
+- **Data Sanitization**: Mongoose schema validation
+
+## 🎨 Design Principles
+
+- **Mobile-First**: Responsive design optimized for smartphones
+- **Corporate Blue**: Professional color scheme
+- **Minimal UI**: Clean, distraction-free interface
+- **Accessibility**: Proper contrast ratios and semantic HTML
+- **Performance**: Optimized images and lazy loading
+- **User Experience**: Intuitive navigation and clear feedback
+
+## 🔄 Data Flow
+
+1. **Employee Login**: Authenticate → Check daily status → Capture photo → Upload to Cloudinary → Store record → Show success
+2. **Admin View**: Authenticate → Fetch records → Display in table → Photo popup on click
+3. **Auto Cleanup**: Daily cron job → Find 7+ day old photos → Delete from Cloudinary → Mark as deleted in DB
+
+## 📊 Database Schema
+
+### User Collection:
+```javascript
+{
+  name: String,
+  email: String (unique),
+  password: String (hashed),
+  employeeId: String (unique),
+  department: String,
+  role: String (employee/admin),
+  isActive: Boolean
+}
+```
+
+### LoginRecord Collection:
+```javascript
+{
+  userId: ObjectId,
+  name: String,
+  email: String,
+  employeeId: String,
+  department: String,
+  photoUrl: String,
+  cloudinaryPublicId: String,
+  loginDate: Date,
+  location: { latitude, longitude, accuracy },
+  isPhotoDeleted: Boolean
+}
+```
+
+## 🤝 Support
+
+For issues and questions:
+1. Check the console for error messages
+2. Verify environment variables are set correctly
+3. Ensure MongoDB and Cloudinary connections are working
+4. Check network connectivity for API calls
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+---
+
+**Built with ❤️ using MERN Stack**

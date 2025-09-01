@@ -1,38 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+/* Custom scrollbar */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Photo modal max height */
+.max-h-90vh {
+  max-height: 90vh;
+}
+
+/* Custom animation for fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Responsive table */
+@media (max-width: 640px) {
+  .table-responsive {
+    font-size: 0.875rem;
+  }
+  
+  .table-responsive th,
+  .table-responsive td {
+    padding: 0.75rem 0.5rem;
+  }
+}
+
+/* Camera video styling */
+video {
+  object-fit: cover;
+}
+
+/* Mirror video for selfie mode - only for specific class */
+.selfie-video {
+  transform: scaleX(-1);
+}
+
+/* Button hover effects */
+.btn-hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-hover-lift:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom focus styles */
+.focus-ring:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #3b82f6;
+}
+
+/* Photo preview styles */
+.photo-preview {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.photo-preview::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    rgba(59, 130, 246, 0.1) 0%, 
+    transparent 50%, 
+    rgba(59, 130, 246, 0.1) 100%
+  );
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  /* Reduce padding on mobile */
+  .mobile-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Stack buttons vertically on mobile */
+  .mobile-stack {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  /* Full width buttons on mobile */
+  .mobile-full-width {
+    width: 100%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Status indicators */
+.status-active {
+  background-color: #dcfce7;
+  color: #166534;
 }
 
-.App-link {
-  color: #61dafb;
+.status-inactive {
+  background-color: #fee2e2;
+  color: #991b1b;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.status-pending {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+/* Custom toast styles integration */
+.toast-success {
+  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+}
+
+.toast-error {
+  background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+}
+
+/* Table hover effects */
+tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Modal backdrop blur */
+.modal-backdrop {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    background-position: 200% 0;
   }
 }
